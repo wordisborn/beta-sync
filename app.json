@@ -1,0 +1,5 @@
+{
+  "name": "beta-sync",
+  "description": "Webhook for MailChimp that syncs list subscription changes with external TestFlight users in iTunes Connect.",
+  "repository": "https://github.com/CrossWaterBridge/beta-sync"
+}

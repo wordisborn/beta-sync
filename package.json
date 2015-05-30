@@ -1,0 +1,25 @@
+{
+  "name": "beta-sync",
+  "version": "1.0.0",
+  "description": "Webhook for MailChimp that syncs list subscription changes with external TestFlight users in iTunes Connect.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "~4.9.x"
+  },
+  "engines": {
+    "node": "0.12.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CrossWaterBridge/beta-sync"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
