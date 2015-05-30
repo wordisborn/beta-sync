@@ -3,8 +3,12 @@ var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/', function(request, response) {
-  response.send('Hello World!');
+app.post('/webhook', function(request, response) {
+  if (request.query.key == process.env.API_KEY) {
+    response.send('OK\n');
+  } else {
+    response.status(403).end();
+  }
 });
 
 app.listen(app.get('port'), function() {
