@@ -1,17 +1,25 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
-var webhook = function(request, response) {
+app.get('/webhook', function(request, response) {
   if (request.query.key == process.env.API_KEY) {
     response.send('OK\n');
   } else {
     response.status(403).end();
   }
-};
-app.get('/webhook', webhook);
-app.post('/webhook', webhook);
+});
+app.post('/webhook', bodyParser.json(), function(request, response) {
+  if (request.query.key == process.env.API_KEY) {
+    console.log(request.body);
+    response.send('OK\n');
+  } else {
+    response.status(403).end();
+  }
+});
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
