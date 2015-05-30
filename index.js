@@ -24,7 +24,7 @@ app.post('/webhook', bodyParser.urlencoded({ extended: true }), function(request
             } else {
                 var firstName = request.body.data.merges.FNAME || null;
                 var lastName = request.body.data.merges.LNAME || null;
-                var groups = (request.body.data.merges.INTERESTS || '').split(',').filter(function(s){ return s != '' });
+                var groups = (request.body.data.merges.INTERESTS || '').split(',').map(function(s){ return s.trim() }).filter(function(s){ return s != '' });
     
                 sync.addOrUpdate(email, firstName, lastName, groups);
             }

@@ -7,8 +7,13 @@
     "start": "node index.js"
   },
   "dependencies": {
-    "body-parser": "~1.12.4",
-    "express": "~4.9.8"
+    "async": "^1.0.0",
+    "body-parser": "^1.12.4",
+    "cheerio": "^0.19.0",
+    "express": "^4.12.4",
+    "lodash": "^3.9.3",
+    "request": "^2.56.0",
+    "tough-cookie": "^1.2.0"
   },
   "engines": {
     "node": "0.12.2"
