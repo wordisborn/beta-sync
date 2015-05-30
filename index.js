@@ -14,7 +14,7 @@ app.get('/webhook', function(request, response) {
 });
 app.post('/webhook', bodyParser.json(), function(request, response) {
   if (request.query.key == process.env.API_KEY) {
-    console.log(request.body);
+    console.log(request);
     response.send('OK\n');
   } else {
     response.status(403).end();
