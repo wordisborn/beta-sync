@@ -13,11 +13,11 @@ function makeConnect() {
 }
 
 module.exports = {
-    addOrUpdate: function(email, firstName, lastName, groupNames) {
+    addOrUpdate: function(email, firstName, lastName, groupNames, connect) {
         var name = [firstName, lastName].filter(function(s){ return s != '' }).join(' ')
         console.log('Add/update "%s" <%s> with groups %j', name, email, groupNames);
         
-        var connect = makeConnect();
+        connect = connect || makeConnect();
         
         var updateName = function(tester, completed) {                
             if (tester.firstName.value != firstName || tester.lastName.value != lastName) {                    
@@ -64,15 +64,17 @@ module.exports = {
                     }
                 });
             } else {
+                console.log('Found tester with email <%s> in iTunes Connect.', email);
+                        
                 var tester = body.data.tester;
                 updateName(tester, function(){ updateGroups(tester); });
             }
         });
     },
-    updateEmail: function(oldEmail, newEmail) {
+    updateEmail: function(oldEmail, newEmail, connect) {
         console.log('Change email from <%s> to <%s>', oldEmail, newEmail);
         
-        var connect = makeConnect();
+        connect = connect || makeConnect();
         
         connect.tester(oldEmail, function(error, body) {
             if (error) {
@@ -102,10 +104,10 @@ module.exports = {
             }
         });
     },
-    remove: function(email) {
+    remove: function(email, connect) {
         console.log('Remove <%s>', email);
         
-        var connect = makeConnect();
+        connect = connect || makeConnect();
         
         connect.tester(email, function(error, body) {
             if (error) {
