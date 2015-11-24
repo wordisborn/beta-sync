@@ -61,7 +61,7 @@ app.post('/webhook', bodyParser.urlencoded({ extended: true }), function(request
             console.error('Missing or unexpected type in request body: %j', request.body);
         }
         
-        response.send('OK\n');
+        response.send({ "success": "User added!" });
     } else {
         response.status(403).end();
     }
