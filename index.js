@@ -19,7 +19,7 @@ app.post('/webhook', bodyParser.urlencoded({ extended: true }), function(request
         switch (request.body.type) {
         case 'subscribe':
         case 'profile':
-            var email = request.body.data.merges.EMAIL;
+            var email = request.body.email;
             if (email == undefined) {
                 console.error('Missing email in request body: %j', request.body);
             } else {
