@@ -14,7 +14,7 @@ app.get('/webhook', function(request, response) {
         response.status(403).end();
     }
 });
-app.post('/webhook', bodyParser.urlencoded({ extended: true, type: '*/x-www-form-urlencoded', inflate:true }), function(request, response) {
+app.post('/webhook', function(request, response) {
     if (request.query.key == process.env.API_KEY) {
 	    console.log(request)
         switch (request.body.type) {
