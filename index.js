@@ -16,7 +16,7 @@ app.get('/webhook', function(request, response) {
 });
 app.post('/webhook', bodyParser.urlencoded({ extended: true }), function(request, response) {
     if (request.query.key == process.env.API_KEY) {
-	    console.log(request.params)
+	    console.log(request)
         switch (request.body.type) {
         case 'profile':
             var email = request.body.email;
